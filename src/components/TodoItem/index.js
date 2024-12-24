@@ -1,4 +1,4 @@
-import { DeleteIcon } from "./DeleteIcon";
+import { DeleteIcon } from "../DeleteIcon";
 
 function TodoItem ({text, completed, onChange, onDelete}){
     return (
