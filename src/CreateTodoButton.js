@@ -1,6 +1,6 @@
 function CreateTodoButton( ){
     return (
-        <p></p>
+        <button type="button">Agregar</button>
     )
 }
 
