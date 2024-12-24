@@ -4,6 +4,7 @@ import {TodoSearch} from './TodoSearch'
 import { TodoList } from './TodoList'
 import { CreateTodoButton } from './CreateTodoButton'
 import { TodoCounter } from './TodoCounter';
+import { TodoItem } from './TodoItem';
 const total = 6
 const progress = 3
 function App() {
@@ -21,18 +22,6 @@ function App() {
     </div>
   );
 }
-
-function TodoItem (){
-  return (
-    <li>
-      <span>V</span>
-      <p>Llorar por la llorona</p>
-      <span>X</span>
-    </li>
-    
-    );
-}
-
 
 
 export default App;
