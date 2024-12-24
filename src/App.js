@@ -4,8 +4,7 @@ import { CreateTodoButton } from './CreateTodoButton'
 import { TodoCounter } from './TodoCounter';
 import { TodoItem } from './TodoItem';
 import React from 'react'
-const total = 6
-const progress = 3
+
 
 const defaultTodos = [
   {
@@ -19,6 +18,16 @@ const defaultTodos = [
   }
 ]
 function App() {
+  const [searchValue, SetSearchValue] = React.useState('');
+  const [todosValue, SetTodosValue] = React.useState(defaultTodos);
+  const total = todosValue.length
+  const progress = todosValue.filter(val => !!val.completed).length
+ 
+  const todosSearched = todosValue
+  .filter(val =>  val.
+    text.toLowerCase()
+    .includes(searchValue.toLowerCase()))
+  
   return (
     <div style={{
       width:"40vw"
@@ -26,10 +35,24 @@ function App() {
 
       <TodoCounter total={total} completed={progress}/>
 
-      <TodoSearch/>
+      <TodoSearch search={{value:searchValue, state: SetSearchValue}}/>
       <TodoList>
-        {defaultTodos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed}/>
+        {todosSearched.map((todo, index) => (
+          <TodoItem 
+          key={todo.text} 
+          text={todo.text} 
+          completed={todo.completed}
+          onChange={(e)=> {
+            const newStat = [...todosValue]
+            newStat[index].completed= e.target.checked
+            SetTodosValue(newStat)
+          }}
+          onDelete={()=>{
+            const newStat = [...todosValue]
+            newStat.splice(index, 1)
+            SetTodosValue(newStat)
+          }}
+          />
         ))}
       </TodoList>
       <CreateTodoButton/>

@@ -1,12 +1,21 @@
-function TodoSearch(){
+import React from "react"
+
+function TodoSearch({search}){
     return (
     <div style={{
       width:'100%'
     }}>
-      <input type="text" 
-        placeholder="Buscar" style={{
+      <input 
+      type="text" 
+      value={search.value}
+      placeholder="Buscar" style={{
         width:'100%'
-      }}></input>
+      }}
+      onChange={(e)=> {
+        search.state(e.target.value)
+      }}
+      
+      ></input>
       </div>
       )
   }

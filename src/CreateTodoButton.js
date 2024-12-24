@@ -10,7 +10,12 @@ function CreateTodoButton( ){
                 }} ></input>
                 <button type="button" style={{
                     margin:"auto"
-                }}>Agregar</button>
+                }} onClick={
+                    (event)=> {
+                        console.log('Hola mundi')
+                        console.log(event.target)
+                    }
+                    }>Agregar</button>
             </div>
            
 
