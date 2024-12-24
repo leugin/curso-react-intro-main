@@ -1,5 +1,14 @@
 function TodoSearch(){
-    return <span></span>
+    return (
+    <div style={{
+      width:'100%'
+    }}>
+      <input type="text" 
+        placeholder="Buscar" style={{
+        width:'100%'
+      }}></input>
+      </div>
+      )
   }
 
   export {TodoSearch}

@@ -1,5 +1,3 @@
-import logo from './platzi.webp';
-import './App.css';
 import {TodoSearch} from './TodoSearch'
 import { TodoList } from './TodoList'
 import { CreateTodoButton } from './CreateTodoButton'
@@ -22,8 +20,12 @@ const defaultTodos = [
 ]
 function App() {
   return (
-    <>
+    <div style={{
+      width:"40vw"
+    }}>
+
       <TodoCounter total={total} completed={progress}/>
+
       <TodoSearch/>
       <TodoList>
         {defaultTodos.map(todo => (
@@ -31,8 +33,8 @@ function App() {
         ))}
       </TodoList>
       <CreateTodoButton/>
-    
-    </>
+
+    </div>
   );
 }
 

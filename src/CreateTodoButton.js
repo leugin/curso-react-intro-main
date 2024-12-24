@@ -1,6 +1,20 @@
 function CreateTodoButton( ){
     return (
-        <button type="button">Agregar</button>
+        <form >
+            <div style={{
+                display: 'flex',
+                width: '100%'
+            }}>
+                <input type="text" style={{
+                    flex:1
+                }} ></input>
+                <button type="button" style={{
+                    margin:"auto"
+                }}>Agregar</button>
+            </div>
+           
+
+        </form>
     )
 }
 
