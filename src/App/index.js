@@ -16,15 +16,19 @@ const STORAGE_KEY  = 'TODOS_V1'
 
 
 function App() {
-  const [todos, saveTodos] = useLocalStorage(STORAGE_KEY, []);
+  const {
+    item:todos, 
+    saveItem: saveTodos,
+    loading,
+    error
+  } = useLocalStorage(STORAGE_KEY, []);
 
   const [searchValue, SetSearchValue] = React.useState('');
   const total = todos.length
   const progress = todos.filter(val => !!val.completed).length
   
   const todosSearched = todos
-  .filter(val =>  val.
-    text.toLowerCase()
+  .filter(val =>  val.text.toLowerCase()
     .includes(searchValue.toLowerCase()))
     const onChange =  (index, checked)=> {
       console.log({index, checked})
@@ -40,6 +44,8 @@ function App() {
     }
   return (
     <AppUI 
+    loading = {loading}
+    error = {error}
     total={total}
     progress = {progress}
     searchValue = {searchValue}
