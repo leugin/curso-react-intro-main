@@ -22,7 +22,7 @@ const defaultTodos = [
 ]
 function App() {
   return (
-    <React.Fragment >
+    <>
       <TodoCounter total={total} completed={progress}/>
       <TodoSearch/>
       <TodoList>
@@ -32,7 +32,7 @@ function App() {
       </TodoList>
       <CreateTodoButton/>
     
-    </React.Fragment>
+    </>
   );
 }
 
