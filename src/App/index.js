@@ -1,9 +1,7 @@
 
 import { TodoProvider } from '../provider/todos';
 import { AppUI } from './AppUi';
-import { useLocalStorage } from './useLocalStorage';
 import React from 'react'
-const STORAGE_KEY  = 'TODOS_V1'
 // const defaultTodos = [
 //   { text: 'Cortar cebolla', completed: true },
 //   { text: 'Tomar el Curso de Intro a React.js', completed: false },

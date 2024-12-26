@@ -5,7 +5,18 @@ import { TodoCounter } from "../components/TodoCounter";
 import { TodoItem } from "../components/TodoItem";
 import { TodoLoading } from "../components/TodosLoading";
 import { TodoContext } from "../provider/todos";
+import { Modal } from "../components/Modal";
+import  React  from 'react';
 function AppUI() {
+  const { 
+    loading,
+     error, todosSearched,
+      completeTodo, 
+      deleteTodo, 
+    openModal,
+    SetOpenModal 
+
+   } = React.useContext(TodoContext)
   return (
     <div
       style={{
@@ -13,10 +24,8 @@ function AppUI() {
       }}
     >
       <TodoCounter/>
-      <TodoSearch search={{}} ></TodoSearch>
-      <TodoContext.Consumer>
-        {({ loading, error, todosSearched, completeTodo, deleteTodo }) => (
-          <TodoList>
+      <TodoSearch />
+      <TodoList>
             {loading && (
               <>
                 <TodoLoading />
@@ -35,9 +44,9 @@ function AppUI() {
               />
             ))}
           </TodoList>
-        )}
-      </TodoContext.Consumer>
       <CreateTodoButton></CreateTodoButton>
+      {openModal && <Modal><p>Este es mi modal</p></Modal>}
+      
     </div>
   );
 }
