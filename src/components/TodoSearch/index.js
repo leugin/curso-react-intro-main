@@ -1,7 +1,7 @@
 import React from "react"
 import { TodoContext } from "../../provider/todos"
 
-function TodoSearch({search}){
+function TodoSearch(){
   const { searchValue, SetSearchValue}  = React.useContext(TodoContext)
     return (
     <div style={{
