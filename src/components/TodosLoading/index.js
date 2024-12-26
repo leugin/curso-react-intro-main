@@ -2,8 +2,8 @@
 function TodoLoading ({text, completed}){
     return (
       <>
-      {[0,1,2].map(() => 
-        <li style={{display: "flex"}}>
+      {[0,1,2].map((i) => 
+        <li style={{display: "flex"}} key={i}>
         <input type="checkbox" className={
          `${completed ? 'is-completed':'incompleted'}`
         }   
