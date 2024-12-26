@@ -1,18 +1,20 @@
 import React from "react"
+import { TodoContext } from "../../provider/todos"
 
 function TodoSearch({search}){
+  const { searchValue, SetSearchValue}  = React.useContext(TodoContext)
     return (
     <div style={{
       width:'100%'
     }}>
       <input 
       type="text" 
-      value={search.value}
+      value={searchValue}
       placeholder="Buscar" style={{
         width:'100%'
       }}
       onChange={(e)=> {
-        search.state(e.target.value)
+        SetSearchValue(e.target.value)
       }}
       
       ></input>
