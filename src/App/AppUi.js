@@ -7,14 +7,15 @@ import { TodoLoading } from "../components/TodosLoading";
 import { TodoContext } from "../provider/todos";
 import { Modal } from "../components/Modal";
 import  React  from 'react';
+import { TodoForm } from "../components/TodoForm";
 function AppUI() {
   const { 
     loading,
-     error, todosSearched,
-      completeTodo, 
-      deleteTodo, 
-    openModal,
-    SetOpenModal 
+     error, 
+     todosSearched,
+     onChange: completeTodo, 
+     onDelete:  deleteTodo, 
+    openModal
 
    } = React.useContext(TodoContext)
   return (
@@ -34,18 +35,20 @@ function AppUI() {
             {error && <p>error</p>}
             {!loading && todosSearched.length === 0 && <p>emp</p>}
 
-            {todosSearched.map((todo) => (
+            {todosSearched.map((todo, index) => (
               <TodoItem
                 key={todo.text}
                 text={todo.text}
                 completed={todo.completed}
-                onComplete={() => completeTodo(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
+                onComplete={() => completeTodo(index, todo.text)}
+                onDelete={() => deleteTodo(index)}
               />
             ))}
           </TodoList>
       <CreateTodoButton></CreateTodoButton>
-      {openModal && <Modal><p>Este es mi modal</p></Modal>}
+      {openModal && <Modal>
+        <TodoForm></TodoForm>
+        </Modal>}
       
     </div>
   );

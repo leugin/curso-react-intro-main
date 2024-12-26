@@ -72,3 +72,29 @@ ul{
 .Icon-container-delete:hover .Icon-svg {
   fill: red;
 }
+
+#modal{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: azure;
+}
+
+.Modal-container{
+  z-index: 100 ;
+  position: fixed;
+  top: 50%;
+  right: 43%;
+  
+}
+
+.Modal-backdrop{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  background-color: rgb(27, 28, 28);
+  opacity: .8;
+}

@@ -22,20 +22,20 @@ function TodoProvider({children}){
         .includes(searchValue.toLowerCase()))
         
         const onChange =  (index, checked)=> {
-          console.log({index, checked})
           const newStat = [...todos]
           newStat[index].completed= checked
           saveTodos(newStat)
         }
         
         const onDelete = (index)=>{
-          console.log(index)
           const newStat = [...todos]
           newStat.splice(index, 1)
           saveTodos(newStat)
         }
     return (
         <TodoContext.Provider value={{
+            todos,
+            saveTodos,
             loading,
             error,
             total, 

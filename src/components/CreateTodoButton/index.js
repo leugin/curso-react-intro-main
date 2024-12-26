@@ -1,25 +1,23 @@
-function CreateTodoButton( ){
-    return (
-        <form >
-            <div style={{
-                display: 'flex',
-                width: '100%'
-            }}>
-                <input type="text" style={{
-                    flex:1
-                }} ></input>
-                <button type="button" style={{
-                    margin:"auto"
-                }} onClick={
-                    (event)=> {
-                        console.log('Hola mundi')
-                        console.log(event.target)
-                    }
-                    }>Agregar</button>
-            </div>
-           
+import React from "react"
+import { TodoContext } from "../../provider/todos"
 
-        </form>
+function CreateTodoButton( ){
+    const {SetOpenModal, openModal} = React.useContext(TodoContext)
+    return (
+        <div  style={{
+            display:'flex'
+        }}>
+            <button type="button" style={{
+                margin: 'auto'
+
+            }}
+            onClick={()=> {
+                SetOpenModal(!openModal)
+            }}
+            >
+                Agregar
+            </button>
+        </div>
     )
 }
 
