@@ -1,4 +1,5 @@
 
+import { TodoProvider } from '../provider/todos';
 import { AppUI } from './AppUi';
 import { useLocalStorage } from './useLocalStorage';
 import React from 'react'
@@ -30,12 +31,14 @@ function App() {
   const todosSearched = todos
   .filter(val =>  val.text.toLowerCase()
     .includes(searchValue.toLowerCase()))
+    
     const onChange =  (index, checked)=> {
       console.log({index, checked})
       const newStat = [...todos]
       newStat[index].completed= checked
       saveTodos(newStat)
     }
+    
     const onDelete = (index)=>{
       console.log(index)
       const newStat = [...todos]
@@ -43,17 +46,9 @@ function App() {
       saveTodos(newStat)
     }
   return (
-    <AppUI 
-    loading = {loading}
-    error = {error}
-    total={total}
-    progress = {progress}
-    searchValue = {searchValue}
-    SetSearchValue = {SetSearchValue}
-    todosSearched = {todosSearched}
-    onChange = {onChange} 
-    onDelete = {onDelete}
-    />
+    <TodoProvider>
+      <AppUI></AppUI>
+    </TodoProvider>
   );
 }
 

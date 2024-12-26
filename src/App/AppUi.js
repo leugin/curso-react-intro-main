@@ -1,50 +1,45 @@
-import {TodoSearch} from '../components/TodoSearch'
-import { TodoList } from '../components/TodoList'
-import { CreateTodoButton } from '../components/CreateTodoButton'
-import { TodoCounter } from '../components/TodoCounter';
-import { TodoItem } from '../components/TodoItem';
-import { TodoLoading } from '../components/TodosLoading';
-function AppUI (
-    {
-      loading,
-      error,
-        total, 
-        progress,
-        searchValue,
-        SetSearchValue,
-        todosSearched,
-        onChange,
-        onDelete
-    }
+import { TodoSearch } from "../components/TodoSearch";
+import { TodoList } from "../components/TodoList";
+import { CreateTodoButton } from "../components/CreateTodoButton";
+import { TodoCounter } from "../components/TodoCounter";
+import { TodoItem } from "../components/TodoItem";
+import { TodoLoading } from "../components/TodosLoading";
+import { TodoContext } from "../provider/todos";
+function AppUI() {
+  return (
+    <div
+      style={{
+        width: "40vw",
+      }}
+    >
+      <TodoCounter/>
+      <TodoSearch search={{}} ></TodoSearch>
+      <TodoContext.Consumer>
+        {({ loading, error, todosSearched, completeTodo, deleteTodo }) => (
+          <TodoList>
+            {loading && (
+              <>
+                <TodoLoading />
+              </>
+            )}
+            {error && <p>error</p>}
+            {!loading && todosSearched.length === 0 && <p>emp</p>}
 
-) {
-
-    return (
-        <div style={{
-            width:"40vw"
-          }}>
-      
-            <TodoCounter total={total} completed={progress}/>
-      
-            <TodoSearch search={{value:searchValue, state: SetSearchValue}}/>
-            <TodoList>
-            {loading && (<TodoLoading/>)}
-            {error && (<h4>Paso un error</h4>)}
-            {!loading && todosSearched.length === 0 && (<h4>Nada que hacer</h4>)}
-            {todosSearched.map((todo, index) => (
-                <TodoItem 
-                key={todo.text} 
-                text={todo.text} 
+            {todosSearched.map((todo) => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
                 completed={todo.completed}
-                onChange={(e)=> onChange(index, e.target.checked )}
-                onDelete={()=>onDelete(index)}
-                />
-              ))}
-            </TodoList>
-            <CreateTodoButton/>
-      
-          </div>
-    )
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            ))}
+          </TodoList>
+        )}
+      </TodoContext.Consumer>
+      <CreateTodoButton></CreateTodoButton>
+    </div>
+  );
 }
 
-export {AppUI}
+export { AppUI };
