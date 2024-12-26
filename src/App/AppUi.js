@@ -3,6 +3,7 @@ import { TodoList } from '../components/TodoList'
 import { CreateTodoButton } from '../components/CreateTodoButton'
 import { TodoCounter } from '../components/TodoCounter';
 import { TodoItem } from '../components/TodoItem';
+import { TodoLoading } from '../components/TodosLoading';
 function AppUI (
     {
       loading,
@@ -27,7 +28,7 @@ function AppUI (
       
             <TodoSearch search={{value:searchValue, state: SetSearchValue}}/>
             <TodoList>
-            {loading && (<h4>Cargando</h4>)}
+            {loading && (<TodoLoading/>)}
             {error && (<h4>Paso un error</h4>)}
             {!loading && todosSearched.length === 0 && (<h4>Nada que hacer</h4>)}
             {todosSearched.map((todo, index) => (
